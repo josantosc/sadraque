@@ -1,8 +1,8 @@
 def agendaEntity(item) -> dict:
     return {
-        "id": item["id"],
-        "descricao": item["descricao"],
-        "data": item["data"]
+        "type_agenda": item["_id"],
+        "name": item["name"],
+        "created_at": item["created_at"]
     }
 
 
