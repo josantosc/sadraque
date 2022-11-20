@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  mongo:
+    image: 'mongo:latest'
+    container_name: sadraque-mongo
+    hostname: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+      - MONGO_INITDB_DATABASE=db-sadraque
+    # ports:
+    #   - "27017:27017"
+    # volumes:
+    #   - './db:/data/db'
