@@ -1,20 +1,3 @@
-
-# from fastapi import FastAPI
-# from routes.agendas import agendas
-
-# app = FastAPI(
-#         title="API Projeto Peniel",
-#         description="Sadraque",
-#         version="0.0.1"
-#     )
-
-
-# app.include_router(agendas)
-
-# @app.get("/", status_code=200)
-# async def health_check():
-#     return {"status": "ok"}
-
 from fastapi import FastAPI
 from dotenv import dotenv_values
 from pymongo import MongoClient
