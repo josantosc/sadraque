@@ -7,7 +7,7 @@ from pydantic import ValidationError
 # from schema.agenda import agendaEntity, agendasEntity
 from app.model.agendas import Agenda, AgendaUpdate
 
-logging = logging.Logger("zapi_client")
+logging = logging.Logger("paniel_logs")
 agendas = APIRouter()
 
 
@@ -32,6 +32,7 @@ async def find_agenda(id: str, request: Request):
 
 @agendas.post('/agendas', response_description="Create a new agenda", status_code=status.HTTP_201_CREATED, response_model=Agenda)
 async def create_agenda(request: Request, agenda: Agenda = Body(...)):
+    print(request)
     try:
         agenda = jsonable_encoder(agenda)
         new_agenda = request.app.database["agendas"].insert_one(agenda)
