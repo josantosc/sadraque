@@ -46,7 +46,7 @@ async def create_agenda(request: Request, agenda: Agenda = Body(...)):
 
 
 
-@agendas.put("/{id}", response_description="Update a agenda", response_model=Agenda)
+@agendas.put("/agendas/{id}", response_description="Update a agenda", response_model=Agenda)
 async def update_agenda(id: str, request: Request, agenda: AgendaUpdate = Body(...)):
     agenda = {k: v for k, v in agenda.dict().items() if v is not None}
 
@@ -67,7 +67,7 @@ async def update_agenda(id: str, request: Request, agenda: AgendaUpdate = Body(.
 
 
 
-@agendas.delete("/{id}", response_description="Delete a agenda")
+@agendas.delete("/agendas/{id}", response_description="Delete a agenda")
 async def delete_agenda(id: str, request: Request, response: Response):
     delete_result = request.app.database["agendas"].delete_one({"_id": ObjectId(id)})
 

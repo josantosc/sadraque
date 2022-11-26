@@ -11,7 +11,7 @@ app = FastAPI(
          version="0.0.1"
      )
 
-@app.get("/", status_code=200)
+@app.get("/health", status_code=200)
 async def health_check():
     return {"status": "ok"}
 

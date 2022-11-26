@@ -1,7 +1,7 @@
 version: '3'
 services:
   peniel-sadraque:
-    image: joscorrea/peniel-sadrque:V1
+    image: joscorrea/peniel-sadrque:V2
     container_name: sadraque
     restart: always
     ports:
