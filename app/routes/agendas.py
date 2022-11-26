@@ -5,7 +5,7 @@ from typing import List
 from bson.objectid import ObjectId
 from pydantic import ValidationError
 # from schema.agenda import agendaEntity, agendasEntity
-from model.agendas import Agenda, AgendaUpdate
+from app.model.agendas import Agenda, AgendaUpdate
 
 logging = logging.Logger("zapi_client")
 agendas = APIRouter()
@@ -14,8 +14,8 @@ agendas = APIRouter()
 @agendas.get('/agendas', response_description="List all agendas", response_model=List[Agenda])
 async def find_all_agendas(request: Request):
     try:
-        agendas = list(request.app.database["agendas"].find(limit=100))
-        return agendas
+        agenda = list(request.app.database["agendas"].find(limit=100))
+        return agenda
 
     except ValidationError as e:
         logging.error("Error in validate agendas: %s", e)

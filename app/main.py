@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from dotenv import dotenv_values
 from pymongo import MongoClient
-from routes.agendas import agendas
 
-config = dotenv_values(".env")
+from app.settings import ATLAS_URI, DB_NAME
+from app.routes.agendas import agendas
+
 
 app = FastAPI(
          title="API Sadraque",
@@ -17,13 +17,12 @@ async def health_check():
 
 @app.on_event("startup")
 def startup_db_client():
-    
     try:
-        app.mongodb_client = MongoClient(config["ATLAS_URI"])
-        app.database = app.mongodb_client[config["DB_NAME"]]
+        app.mongodb_client = MongoClient(f"{ATLAS_URI}")
+        app.database = app.mongodb_client[f"{DB_NAME}"]
         print("Connected to the MongoDB database!")
     except Exception:
-        print("Unable to connect to the server.")   
+        print("Unable to connect to the server.")
 
 @app.on_event("shutdown")
 def shutdown_db_client():

@@ -3,4 +3,4 @@ __pycache__
 db
 docker-entrypoint-initdb.d
 venv-sadraque
-.env
+app/.env
