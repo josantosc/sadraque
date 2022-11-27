@@ -19,8 +19,10 @@ from bson.objectid import ObjectId
 #         field_schema.update(type="string")
 
 class Agenda(BaseModel):
-    title: str = Field(...)
-    data: list[int] = None
+    title: str
+    data: list[int]
+    description: Optional[str]
+    time: Optional[str]
     created_at: Optional[datetime] = datetime.now()
 
     class Config:
@@ -30,7 +32,10 @@ class Agenda(BaseModel):
         schema_extra = {
             "example": {
              "title": "Culto de Jovens",
-             "date": ['01']
+             "date": ['01'],
+             "description": "Descrição maneira!",
+             "time": "HH:mm"
+
             }
         }
 
