@@ -19,10 +19,10 @@ from bson.objectid import ObjectId
 #         field_schema.update(type="string")
 
 class Agenda(BaseModel):
-    title: str
-    data: list[int]
-    description: Optional[str]
-    time: Optional[str]
+    title: str = Field(...)
+    date: list[int] = Field(...)
+    description: Optional[str] = Field(...)
+    time: Optional[str] = Field(...)
     created_at: Optional[datetime] = datetime.now()
 
     class Config:
